@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Cookie</title>
+</head>
+<body>
+    <h1>Read Cookie Value</h1>
+    <p>Cookie Value: <span id="cookieValue"></span></p>
+
+    <script>
+        // JavaScript code to read and display the value of a cookie
+        function readCookie() {
+            var cookieName = mumo; // Replace with your cookie name
+            var cookieValue = getCookie(cookieName);
+            
+            if (cookieValue) {
+                document.getElementById("cookieValue").textContent = cookieValue;
+            } else {
+                document.getElementById("cookieValue").textContent = "Cookie not found";
+            }
+        }
+
+        // Function to get the value of a cookie by its name
+        function getCookie(name) {
+            var cookies = document.cookie.split(';');
+            
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.startsWith(name + '=')) {
+                    return cookie.substring(name.length + 1);
+                }
+            }
+            
+            return null;
+        }
+
+        // Call the readCookie() function when the page loads
+        window.onload = readCookie;
+    </script>
+</body>
+</html>
